@@ -20,8 +20,20 @@ app.get('/notFound',notFoundController);
 app.post('/posts/verificar',verificarPost);
 app.post('/posts/descargarPDF',descargarPDFPost);
 
-mongoose.connect('mongodb://localhost/students',{useNewUrlParser:true});
+/* mongoose.connect('mongodb://localhost/students',{useNewUrlParser:true}); */
 
-app.listen(3000, ()=>{
+mongoose.connect('mongodb+srv://david:Cra48n70a54@cluster0.wh0fb.mongodb.net/students',{useNewUrlParser:true});
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+port = 3000;
+}
+
+
+/* app.listen(3000, ()=>{
     console.log('Server running on port 3000')
-})
+}) */
+
+app.listen(port, ()=>{
+    console.log('App listening...')
+    })
